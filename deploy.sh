@@ -1,2 +1,2 @@
 git pull
-sudo docker build -t TweetBot:latest .
+sudo docker build -t tweetbot:latest .
