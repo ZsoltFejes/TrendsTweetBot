@@ -17,30 +17,29 @@ logger = logging.getLogger()
 class getSearchTrend():
     def trendUS():
         data = pytrend.trending_searches(pn='united_states')
-        return data.shift(periods=1).iloc[1:4].to_csv(header=None)
+        return data.shift(periods=1).iloc[1:11].to_csv(header=None)
 
     def trendUK():
         data = pytrend.trending_searches(pn='united_kingdom')
-        return data.shift(periods=1).iloc[1:4].to_csv(header=None)
+        return data.shift(periods=1).iloc[1:11].to_csv(header=None)
 
 ##############################
 ######## Twitter API #########
 ##############################
 def tweet():
+    tweetUS = '[Trend BOT]\nTop 10 trending searches from United States\nhttps://trends.google.com/trends/trendingsearches/daily?geo=US\n{}'.format(getSearchTrend.trendUS())
+    tweetGB = '[Trend BOT]\nTop 10 trending searches from United Kingdom\nhttps://trends.google.com/trends/trendingsearches/daily?geo=GB\n{}'.format(getSearchTrend.trendUK())
     try:
-        logger.info('Test tweet from Tweepy Python\n' + getSearchTrend.trendUS())
-        api.update_status('[BOT]\nTop 3 Most Searched topic from US\n'
-                          + getSearchTrend.trendUS()
-                          + '\nMost Searched topic from UK\n'
-                          + getSearchTrend.trendUK())
+        tweet = api.update_status(tweetUS)
+        logger.info('Tweet has been submitted https://twitter.com/ZsoltFejes/status/{}'.format(tweet.id))
+        api.update_status('@{}\n{}\n'.format(tweet.user.screen_name, tweetGB), tweet.id)
     except Exception as e:
-        logger.error("Error sending API request", exc_info=True)
-        raise e
+        logger.error("Error sending Tweet\n{}".format(e), exc_info=True)
 
 ##############################
 ######## Schedulers ##########
 ##############################
-schedule.every(5).minutes.do(tweet)
+schedule.every(10).seconds.do(tweet)
 
 def main():
     logger.info('Application has started')
