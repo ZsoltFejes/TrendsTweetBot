@@ -39,7 +39,7 @@ def tweet():
 ##############################
 ######## Schedulers ##########
 ##############################
-schedule.every(10).seconds.do(tweet)
+schedule.every(5).minutes.do(tweet)
 
 def main():
     logger.info('Application has started')
