@@ -29,7 +29,10 @@ class getSearchTrend():
 def tweet():
     try:
         logger.info('Test tweet from Tweepy Python\n' + getSearchTrend.trendUS())
-        api.update_status('Test tweet from Tweepy Python\n' + getSearchTrend.trendUS())
+        api.update_status('[BOT]\nTop 3 Most Searched topic from US\n'
+                          + getSearchTrend.trendUS()
+                          + '\nMost Searched topic from UK\n'
+                          + getSearchTrend.trendUK())
     except Exception as e:
         logger.error("Error sending API request", exc_info=True)
         raise e
