@@ -30,9 +30,7 @@ jobs:
         # Password or personal access token used to log in to a Docker registry. If not set then no login will occur
         password: 7ab2b378-464a-4c63-8a04-663dfdf87fbe
         # Docker repository to tag the image with
-        repository: tweetbot
+        repository: zsoltfejes/tweetbot
         # Comma-delimited list of tags. These will be added to the registry/repository to form the image's tags
-        tags: latest
+        tag_with_ref: true
         path: .
-        # Path to the Dockerfile (Default is '{path}/Dockerfile')
-        dockerfile: dockerfile
