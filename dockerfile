@@ -10,6 +10,7 @@ RUN venv/bin/pip install --upgrade pip
 RUN venv/bin/pip install -r requirements.txt
 
 COPY bot.py config.py boot.sh ./
+RUN chmod +x boot.sh
 
 RUN chown -R bot:bot ./
 USER bot
