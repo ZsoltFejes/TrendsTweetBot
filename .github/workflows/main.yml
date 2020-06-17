@@ -28,5 +28,3 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: zsoltfejes/tweetbot
-        tag_with_ref: true
-        tag_with_sha: true
