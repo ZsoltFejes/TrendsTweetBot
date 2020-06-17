@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Tweet Bot Docker Update
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v1.1.0
+      with:
+        # Username used to log in to a Docker registry. If not set then no login will occur
+        username: zsoltfejes
+        # Password or personal access token used to log in to a Docker registry. If not set then no login will occur
+        password: 7ab2b378-464a-4c63-8a04-663dfdf87fbe
+        # Docker repository to tag the image with
+        repository: zsoltfejes/tweetbot
+        # Comma-delimited list of tags. These will be added to the registry/repository to form the image's tags
+        tag_with_ref: true
+        path: .
