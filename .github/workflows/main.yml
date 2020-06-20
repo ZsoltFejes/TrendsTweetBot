@@ -25,12 +25,7 @@ jobs:
     - name: Build and push Docker images
       uses: docker/build-push-action@v1.1.0
       with:
-        # Username used to log in to a Docker registry. If not set then no login will occur
-        username: zsoltfejes
-        # Password or personal access token used to log in to a Docker registry. If not set then no login will occur
-        password: 7ab2b378-464a-4c63-8a04-663dfdf87fbe
-        # Docker repository to tag the image with
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
         repository: zsoltfejes/tweetbot
-        # Comma-delimited list of tags. These will be added to the registry/repository to form the image's tags
-        tag_with_ref: true
-        path: .
+        tags: latest
