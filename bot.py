@@ -30,7 +30,7 @@ def tweetUS():
     tweetUS = '[Trends BOT]\nTop 10 #trending searches from #UnitedStates\nhttps://trends.google.com/trends/trendingsearches/daily?geo=US\n{}'.format(getSearchTrend.trendUS())
     try:
         tweet = api.update_status(tweetUS)
-        logger.info('Tweet has been submitted https://twitter.com/ZsoltFejes/status/{}'.format(tweet.id))
+        logger.info('US Tweet has been submitted https://twitter.com/ZsoltFejes/status/{}'.format(tweet.id))
     except Exception as e:
         logger.error("Error sending Tweet\n{}".format(e), exc_info=True)
 
