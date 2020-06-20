@@ -27,25 +27,25 @@ class getSearchTrend():
 ######## Twitter API #########
 ##############################
 def tweetUS():
-    tweetUS = '[Trends BOT]\nTop 10 #trending searches from #UnitedStates\nhttps://trends.google.com/trends/trendingsearches/daily?geo=US\n{}'.format(getSearchTrend.trendUS())
+    tweetUS = '[Trends BOT]\nTop 10 #trending searches from #UnitedStates #US\nhttps://trends.google.com/trends/trendingsearches/daily?geo=US\n{}'.format(getSearchTrend.trendUS())
     try:
         tweet = api.update_status(tweetUS)
-        logger.info('US Tweet has been submitted https://twitter.com/ZsoltFejes/status/{}'.format(tweet.id))
+        logger.info('US Tweeted https://twitter.com/ZsoltFejes/status/{}'.format(tweet.id))
     except Exception as e:
         logger.error("Error sending Tweet\n{}".format(e), exc_info=True)
 
-def tweetUK():
-    tweetGB = '[Trends BOT]\nTop 10 #trending searches from #UnitedKingdom\nhttps://trends.google.com/trends/trendingsearches/daily?geo=GB\n{}'.format(getSearchTrend.trendUK())
+def tweetGB():
+    tweetGB = '[Trends BOT]\nTop 10 #trending searches from #UnitedKingdom #GB #UK #England\nhttps://trends.google.com/trends/trendingsearches/daily?geo=GB\n{}'.format(getSearchTrend.trendUK())
     try:
         tweet = api.update_status(tweetGB)
-        logger.info('UK Tweet has been submitted https://twitter.com/ZsoltFejes/status/{}'.format(tweet.id))
+        logger.info('GB Tweeted https://twitter.com/ZsoltFejes/status/{}'.format(tweet.id))
     except Exception as e:
         logger.error("Error sending Tweet\n{}".format(e), exc_info=True)
 ##############################
 ######## Schedulers ##########
 ##############################
-schedule.every().day.at("22:55").do(tweetUK)
-schedule.every().day.at("03:55").do(tweetUS)
+schedule.every().day.at("22:55").do(tweetGB) #UTC
+schedule.every().day.at("03:55").do(tweetUS) #UTC
 
 def main():
     logger.info('Application has started')
