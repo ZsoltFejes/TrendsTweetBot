@@ -45,7 +45,7 @@ def tweetGB():
 ######## Schedulers ##########
 ##############################
 schedule.every().day.at("22:55").do(tweetGB) #UTC
-schedule.every().day.at("03:55").do(tweetUS) #UTC
+schedule.every().day.at("06:55").do(tweetUS) #UTC
 
 def main():
     logger.info('Application has started')
